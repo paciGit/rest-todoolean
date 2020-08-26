@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Todoolean</title>
+  <!-- <link rel="icon" href=""> -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <!-- Css -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div id="app">
+
+   <header>
+     <h1>Todoolean List</h1>
+   </header>
+
+   <main>
+
+     <div class="write">
+       <input id="new-todo" type="text" placeholder="Inserisci un nuovo Oggetto">
+       <button id="todo-btn"> => </button>
+     </div>
+
+     <div>
+       <ul class="list-todo">
+         <li class="todo">
+           <span class="remove">X</span>
+         </li>
+       </ul>
+     </div>
+     
+   </main>
+
+  </div>
+
+  <!-- Template -->
+  <script id="handlebars-template" type="text/x-handlebars-template">
+    <li class="todo">
+      {{todo}}
+      <span class="remove" data-id="{{id}}">X</span>
+    </li>
+  </script>
+
+  <!-- Jquery -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
+
+  <script src="main.js"></script>
+
+</body>
+
+</html>
