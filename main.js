@@ -11,17 +11,23 @@ function init(){
   var listTodo = $(".list-todo");
   var urlApi = "http://157.230.17.132:3017/todos";
 
-  printAll(urlApi, listTodo, template)
+  printAll(urlApi, listTodo, template);
 
   btn.click(() =>{
-    addTodo(input, urlApi, listTodo, template)
+    addTodo(input, urlApi, listTodo, template);
+  })
+
+  listTodo.on("click","remove", function(){
+    console.log(idRemove);
+
+    deleteTodo($(this),urlApi, listTodo, template);
   })
 }
 
 /* Functions -------------------------------------------*/
 
 
-//aggiungi una nuova Todo (Crud)
+// Aggiunta
 function addTodo(input, urlApi, listTodo, template){
 
 var todoValue = input.val().trim();
@@ -38,7 +44,7 @@ $.ajax(settings)
 .done(() =>{
   printAll(urlApi, listTodo, template)
 })
-.fail((error) =>{
+.fail(error =>{
   console.log("Si è verificato un errore " + error.status);
 })
 
@@ -46,7 +52,7 @@ $.ajax(settings)
 
 
 
-//printa tutte le todo presente nell'api (cRud)
+// Stampa tutte le todo
 function printAll(urlApi, listTodo, template){
 listTodo.html("");
 
@@ -68,8 +74,34 @@ $.ajax(settings)
       listTodo.append(template(context))
     })
 
+     listTodo.on('click',".remove", () =>{
+     var idRemove = $(this).data("id");
+     console.log(idRemove);
+
+    deleteTodo(idRemove,urlApi, listTodo, template);
+
+    })
   })
-  .fail((error) =>{
+  .fail(error =>{
+    console.log("Si è verificato un errore " + error.status);
+  })
+}
+
+// Elimina
+function deleteTodo(self, urlApi, listTodo, template){
+  var idRemove = self.data("id");
+
+
+  var settings = {
+    url: urlApi + "/" + idRemove,
+    method: "DELETE"
+  }
+
+  $.ajax(settings)
+  .done(() =>{
+    printAll(urlApi, listTodo, template);
+  })
+  .fail(error =>{
     console.log("Si è verificato un errore " + error.status);
   })
 }

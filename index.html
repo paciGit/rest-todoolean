@@ -28,13 +28,9 @@
      </div>
 
      <div>
-       <ul class="list-todo">
-         <li class="todo">
-           <span class="remove">X</span>
-         </li>
-       </ul>
+       <ul class="list-todo"></ul>
      </div>
-     
+
    </main>
 
   </div>
@@ -43,7 +39,7 @@
   <script id="handlebars-template" type="text/x-handlebars-template">
     <li class="todo">
       {{todo}}
-      <span class="remove" data-id="{{id}}">X</span>
+      <span class="remove" data-id="{{ id }}">X</span>
     </li>
   </script>
 
