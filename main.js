@@ -17,8 +17,7 @@ function init(){
     addTodo(input, urlApi, listTodo, template);
   })
 
-  listTodo.on("click","remove", function(){
-    console.log(idRemove);
+  $(document).on("click",".remove", function(){
 
     deleteTodo($(this),urlApi, listTodo, template);
   })
@@ -74,13 +73,13 @@ $.ajax(settings)
       listTodo.append(template(context))
     })
 
-     listTodo.on('click',".remove", () =>{
-     var idRemove = $(this).data("id");
-     console.log(idRemove);
-
-    deleteTodo(idRemove,urlApi, listTodo, template);
-
-    })
+    // listTodo.on('click',".remove", () =>{
+    // var idRemove = $(this).data("id");
+    // console.log(idRemove);
+    //
+    // deleteTodo(idRemove,urlApi, listTodo, template);
+    //
+    // })
   })
   .fail(error =>{
     console.log("Si è verificato un errore " + error.status);
@@ -91,6 +90,7 @@ $.ajax(settings)
 function deleteTodo(self, urlApi, listTodo, template){
   var idRemove = self.data("id");
 
+  console.log(idremove);
 
   var settings = {
     url: urlApi + "/" + idRemove,
